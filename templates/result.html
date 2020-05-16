@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>FillAPix</title>
+{% endblock %}
+
+{% block body %}
+Nazwa gracza: {{gracz}}
+<br/>
+<br/>
+Zagadka do rozwiązania:
+<br/>
+{% for i in range (h) %}
+{% for j in range (w) %}
+{{ val[i][j] }}
+{% endfor %}
+<br/>
+{% endfor %}
+
+Tutaj wpisz odpowiedz:
+
+<form action="/save" method="POST" id="save">
+    <br/>
+    <textarea name="txt" cols="40" rows="30">
+{% for i in range (s) %}{% for j in range (k) %}{{save[i][j]}}{% endfor %}
+{% endfor %}
+
+    </textarea>
+    <br/>
+    <br/>
+    <br/>
+    <input type="text" name="save">
+    <br/>
+    <button type="submit">Zapisz stan gry</button>
+</form>
+
+<form action="/sprawdz" method="POST" id="sprawdz">
+    <br/>
+    <button type="submit">Sprawdz rozwiazanie</button>
+</form>
+
+{% endblock %}
